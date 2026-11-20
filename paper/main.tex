@@ -37,7 +37,7 @@ $s\to\infty$, with $L=\log s$, $M(s)/e^{\gamma}$ equals
 $L+\log L-C+(\log L-\kappa)/L$ up to an error $O((\log L)^2/L^2)$. Here
 $C$ is the logarithm of Somos's quadratic recurrence constant and
 $\kappa$ is an explicit constant built from the first two moments of
-$\log K$ for a geometric random variable $K$. The terms in $1/L$ rest on
+$\log K$ for a random variable $K$ with $\PP(K=k)=2^{-k}$. The terms in $1/L$ rest on
 the Siegel--Walfisz theorem for moduli that are powers of $2$ up to a
 fixed power of $\log s$.
 \end{abstract}
@@ -83,7 +83,7 @@ As $s\to\infty$, with $L=\log s$,
 
 We call $w(p)=v_2(p-1)\ge1$ the cost of an odd prime $p$ and
 $b(p)=\log(p/(p-1))$ its benefit. The cost of a finite set $S$ of odd
-primes is $\sum_{p\in S}w(p)$, and $S$ is admissible if its cost is at
+primes is $\sum_{p\in S}w(p)$, its benefit is $\sum_{p\in S}b(p)$, and $S$ is admissible if its cost is at
 most $s$. Let
 \[
 H(s)=\max\Bigl\{\prod_{p\in S}\frac{p}{p-1}:\ S\ \text{admissible}\Bigr\},
@@ -101,8 +101,8 @@ $\liminf_{n\to\infty}\varphi(n)\log\log n/n=e^{-\gamma}$
 set has at most $s$ elements, so $M(s)=2H(s)$ is at most the product of
 $p/(p-1)$ over the first $s+1$ primes. By Mertens' theorem
 \cite[Lemma~8]{Ju23} and the prime number theorem this product is
-$e^\gamma(L+\log L+o(1))$, so $M(s)\le e^\gamma(L+\log L+o(1))$. The first
-two terms of \eqref{eq:main} are this bound. Theorem~\ref{thm:main} adds the constant
+$e^\gamma(L+\log L+o(1))$, so $M(s)\le e^\gamma(L+\log L+o(1))$. By
+Theorem~\ref{thm:main} this bound is sharp in its first two terms. The theorem adds the constant
 $-C$ and the term $(\log L-\kappa)/L$, which depend on how the costs are
 spread over the primes. The primes of cost $k$ form the set
 $P_k$ of primes $p\equiv1+2^k\pmod{2^{k+1}}$, which has relative
@@ -113,8 +113,8 @@ fixed modulus does not give this, and the Siegel--Walfisz theorem
 \cite[Theorem~12.1]{Kou} does.
 
 For $t>0$ let the threshold set $I_t$ be the set of odd primes with
-$b(p)/w(p)\ge1/t$, and let $W(t)$ and $B(t)$ be the sums of $w(p)$ and of
-$b(p)$ over $I_t$. With $x=\log t$, Sections~\ref{sec:cost}
+$b(p)/w(p)\ge1/t$, and let $W(t)$ and $B(t)$ be the cost and the benefit
+of $I_t$. With $x=\log t$, Sections~\ref{sec:cost}
 and~\ref{sec:benefit} prove that as $t\to\infty$
 \[
 W(t)=\frac tx\Bigl\{1+\frac{C+1}{x}+O(x^{-2})\Bigr\},\qquad
@@ -276,7 +276,7 @@ k\li(t/k)=t\Bigl\{\frac1{x-\log k}+\frac1{(x-\log k)^2}+O\Bigl(\frac1{(x-\log k)
 =\frac tx\Bigl\{1+\frac{1+\log k}{x}+O\Bigl(\frac{(1+\log k)^2}{x^2}\Bigr)\Bigr\},
 \]
 uniformly for $k\le k_0$, as $\log k\le\log k_0=o(x)$. The moments
-$\sum_k2^{-k}(1+\log k)^r$ are finite, and completing the sums over
+$\sum_k2^{-k}(1+\log k)^j$, $j=0,1,2$, are finite, and completing the sums over
 $k\le k_0$ to all $k$ changes them by $O(2^{-k_0}\log k_0)=O(x^{-7})$. Since
 $\sum_k2^{-k}=1$ and $\sum_k2^{-k}(1+\log k)=1+C$, the proposition
 follows.
@@ -364,7 +364,7 @@ $b(p_*)$ being $O(x^2/t)$. By Proposition~\ref{prop:cost} and
 s=\frac tx\Bigl\{1+\frac{C+1}{x}+O(x^{-2})\Bigr\}.
 \end{equation}
 
-\subsection*{Elimination of $t$}
+\subsection*{Elimination of \texorpdfstring{$t$}{t}}
 Taking logarithms in \eqref{eq:s},
 \[
 L=x-\log x+\frac{C+1}{x}+O(x^{-2}).
@@ -408,7 +408,7 @@ This paper is part of a broader research project on proving open problems with A
 
 \section*{Data and code availability}
 
-The script \texttt{check.py} is available at \url{https://github.com/yspennstate/totient-two-adic-envelope}. It solves the knapsack problem exactly for $s\le12$ and checks the values against every $n\le200000$ and against exhaustive search for $s\le6$, computes $C$, $D$ and $\kappa$, and computes $M(s)$ at $s=16,32,\dots,512$ together with the three- and four-term approximations.
+The script \texttt{check.py} is available at \url{https://github.com/yspennstate/totient-two-adic-envelope}. It solves the knapsack problem exactly for $s\le12$ and checks that $n/\varphi(n)\le M(v_2(\varphi(n)))$ for every $n\le200000$ with $v_2(\varphi(n))\le12$, and checks the values against exhaustive search for $s\le6$, computes $C$, $D$ and $\kappa$, and computes $M(s)$ at $s=16,32,\dots,512$ together with the three- and four-term approximations.
 
 \begin{thebibliography}{99}
 
