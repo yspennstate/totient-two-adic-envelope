@@ -1,0 +1,465 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl,booktabs}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+
+\DeclareMathOperator{\li}{li}
+\newcommand{\PP}{\mathbb{P}}
+
+\hypersetup{pdftitle={The largest totient ratio with prescribed 2-adic valuation},pdfauthor={Yitzchak Shmalo}}
+
+\begin{document}
+
+\title[Totient ratio with prescribed 2-adic valuation]{The largest totient ratio with prescribed $2$-adic valuation}
+\author{Yitzchak Shmalo}
+\address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
+\email{yitzchak.shmalo@gmail.com}
+\date{}
+\subjclass[2020]{11A25, 11N37, 11N13}
+\keywords{Euler's totient function, $2$-adic valuation, Siegel--Walfisz theorem, Mertens' theorem, extremal problems}
+
+\begin{abstract}
+For $s\ge0$ let $M(s)$ be the largest value of $n/\varphi(n)$ over the
+integers $n$ with $v_2(\varphi(n))=s$. Then $M(s)$ is twice the largest
+value of $\prod_{p\in S}p/(p-1)$ over finite sets $S$ of odd primes with
+$\sum_{p\in S}v_2(p-1)\le s$, a knapsack problem over the odd primes. As
+$s\to\infty$, with $L=\log s$, $M(s)/e^{\gamma}$ equals
+$L+\log L-C+(\log L-\kappa)/L$ up to an error $O((\log L)^2/L^2)$. Here
+$C$ is the logarithm of Somos's quadratic recurrence constant and
+$\kappa$ is an explicit constant built from the first two moments of
+$\log K$ for a geometric random variable $K$. The terms in $1/L$ rest on
+the Siegel--Walfisz theorem for moduli that are powers of $2$ up to a
+fixed power of $\log s$.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Let $\varphi$ be Euler's function and $v_2$ the $2$-adic valuation. Every
+odd prime factor of $n$ contributes at least one factor $2$ to
+$\varphi(n)$, so the valuation $v_2(\varphi(n))$ limits the number of odd
+prime factors of $n$ and therefore the size of $n/\varphi(n)$. For
+integers $s\ge0$ put
+\[
+M(s)=\max\Bigl\{\frac{n}{\varphi(n)}:\ n\ge1,\ v_2(\varphi(n))=s\Bigr\}.
+\]
+The maximum exists by Proposition~\ref{prop:reduction} below. Write
+\[
+C=\sum_{k\ge1}\frac{\log k}{2^k},\qquad
+D=\sum_{k\ge1}\frac{(\log k)^2}{2^k},\qquad
+\kappa=1+C+\frac{D-C^2}{2}.
+\]
+Here $e^C=\prod_{k\ge1}k^{2^{-k}}$ is Somos's quadratic recurrence
+constant~\cite{SH07}, and $D-C^2>0$ is the variance of $\log K$
+for a random variable $K$ with $\PP(K=k)=2^{-k}$. Numerically,
+\[
+C=0.50783\,39228\,68438\ldots,\quad D=0.58929\,63043\,94759\ldots,\quad
+\kappa=1.67353\,44284\,57844\ldots .
+\]
+All logarithms are natural and $\gamma$ is Euler's constant. The
+letters $c$, $c_A$ denote positive constants that may change from one
+occurrence to the next, while $C$, $D$ and $\kappa$ are the fixed
+constants above. We write $f\sim g$ when $f/g\to1$, and $\#$ for the
+number of elements of a set.
+
+\begin{theorem}\label{thm:main}
+As $s\to\infty$, with $L=\log s$,
+\begin{equation}\label{eq:main}
+\frac{M(s)}{e^\gamma}=L+\log L-C+\frac{\log L-\kappa}{L}
++O\Bigl(\frac{(\log L)^2}{L^2}\Bigr).
+\end{equation}
+\end{theorem}
+
+We call $w(p)=v_2(p-1)\ge1$ the cost of an odd prime $p$ and
+$b(p)=\log(p/(p-1))$ its benefit. The cost of a finite set $S$ of odd
+primes is $\sum_{p\in S}w(p)$, and $S$ is admissible if its cost is at
+most $s$. Let
+\[
+H(s)=\max\Bigl\{\prod_{p\in S}\frac{p}{p-1}:\ S\ \text{admissible}\Bigr\},
+\]
+a $0$--$1$ knapsack problem over the odd primes with capacity $s$.
+Writing $n=2^\nu m$ with $m$ odd shows that $M(s)=2H(s)$
+(Proposition~\ref{prop:reduction}).
+
+When every prime costs one the problem is classical: among the integers
+with at most $r$ distinct prime factors, $n/\varphi(n)$ is largest at the
+product of the first $r$ primes, and together with Mertens' theorem this
+gives Landau's theorem
+$\liminf_{n\to\infty}\varphi(n)\log\log n/n=e^{-\gamma}$
+\cite[Theorem~328]{HW}. Since every cost is at least one, an admissible
+set has at most $s$ elements, so $M(s)=2H(s)$ is at most the product of
+$p/(p-1)$ over the first $s+1$ primes. By Mertens' theorem
+\cite[Lemma~8]{Ju23} and the prime number theorem this product is
+$e^\gamma(L+\log L+o(1))$, so $M(s)\le e^\gamma(L+\log L+o(1))$. The first
+two terms of \eqref{eq:main} are this bound. Theorem~\ref{thm:main} adds the constant
+$-C$ and the term $(\log L-\kappa)/L$, which depend on how the costs are
+spread over the primes. The primes of cost $k$ form the set
+$P_k$ of primes $p\equiv1+2^k\pmod{2^{k+1}}$, which has relative
+density $2^{-k}$.
+The term $(\log L-\kappa)/L$ uses the number of primes of $P_k$ up to $y$
+uniformly for $2^{k+1}$ up to a fixed power of $\log y$. A prime number theorem for each
+fixed modulus does not give this, and the Siegel--Walfisz theorem
+\cite[Theorem~12.1]{Kou} does.
+
+For $t>0$ let the threshold set $I_t$ be the set of odd primes with
+$b(p)/w(p)\ge1/t$, and let $W(t)$ and $B(t)$ be the sums of $w(p)$ and of
+$b(p)$ over $I_t$. With $x=\log t$, Sections~\ref{sec:cost}
+and~\ref{sec:benefit} prove that as $t\to\infty$
+\[
+W(t)=\frac tx\Bigl\{1+\frac{C+1}{x}+O(x^{-2})\Bigr\},\qquad
+B(t)=\log\frac{e^\gamma x}{2}-\frac Cx-\frac D{2x^2}+O(x^{-3}).
+\]
+To connect these with $H(s)$ we use Dantzig's greedy bound for the
+$0$--$1$ knapsack problem \cite{Da57}. The ratios $b(p)/w(p)$ are
+pairwise distinct (Section~\ref{sec:proof}). Order the odd primes by
+decreasing $b(p)/w(p)$, let $p_*$ be the first prime at which the running
+total of costs exceeds $s$, and, for this $s$, take
+$t=w(p_*)/b(p_*)$. Then $I_t$ consists of $p_*$ and the primes before it,
+and the greedy bound gives, by \eqref{eq:overflow} and
+\eqref{eq:sandwich} below,
+\[
+B(t)-b(p_*)\le\log H(s)\le B(t),\qquad b(p_*)=O\Bigl(\frac{\log t}{t}\Bigr),\qquad 0<W(t)-s=O(\log t).
+\]
+Theorem~\ref{thm:main} follows when $t$ is eliminated between the two
+expansions. A prime of cost $k$ lies in $I_t$ exactly when
+$p\le t/k+O(1)$. Compared with the sum of $b(p)$ over all odd primes
+$p\le t$, $B(t)$ therefore
+loses about $\sum_k2^{-k}\log\bigl(x/(x-\log k)\bigr)$, and the expansion
+of this sum produces $C$ and $D$.
+
+\subsection*{Related work}
+Erd\H{o}s asked whether $n/\varphi(n)$ is unbounded when $n$ runs over
+the least preimages of the values of $\varphi$; this is Problem~51 in
+Bloom's list \cite{Bloom51} and is open. The function $M(s)$ maximizes
+over all preimages and does not answer that question: $M(1)=3$ is
+attained at $n=6$, while the least preimage of $\varphi(6)=2$ is $3$.
+Contiero and Lima \cite{CL20} study totient values in a fixed $2$-adic
+stratum, that is, the multiplicities and counts of the values of
+$\varphi$ with $2$-adic valuation $s$; Zhao \cite{Zh25} studies the bound
+$v_p(\varphi(n))\le\lfloor\log_p n\rfloor$ and its equality cases; for
+$p=2$ it says that every $n$ with $v_2(\varphi(n))=s$ satisfies $n\ge2^s$,
+a bound on the size of $n$ rather than on $n/\varphi(n)$.
+Algorithms for inverting $\varphi$ are treated by Contini, Croot and
+Shparlinski \cite{CCS06}; they find the preimages of one value of
+$\varphi$, while $M(s)$ ranges over all values with $2$-adic valuation $s$.
+
+\section{Reduction to a knapsack problem}\label{sec:reduction}
+
+The cost $w(p)$, the benefit $b(p)$, admissible sets and $H(s)$ are as
+in the introduction.
+
+\begin{proposition}\label{prop:reduction}
+The maximum $H(s)$ exists, and $M(s)=2H(s)$. For $s\ge1$ every
+maximizing set $S$ has $\sum_{p\in S}w(p)=s$ and consists of primes at
+most $q_s$, the $s$-th prime congruent to $3$ modulo $4$.
+\end{proposition}
+
+\begin{proof}
+Let $s\ge1$. An admissible set has at most $s$ elements, since $w\ge1$.
+If it contains a prime $p>q_s$, then one of the $s$ primes $p'\le q_s$
+with $p'\equiv3\pmod4$ is missing from it, and replacing $p$ by $p'$
+increases the product, since $p'<p$, without increasing the cost, since
+$w(p')=1$. Hence the maximum may be taken over subsets of the odd primes
+up to $q_s$ and exists. A maximizing set of cost less than $s$ would miss
+one of those $s$ primes of cost one, and adding it would increase the
+product; so a maximizing set has cost exactly $s$. For $s=0$ only the empty
+set is admissible and $H(0)=1$.
+
+Write $n=2^\nu m$ with $m$ odd. Since $\varphi$ is multiplicative and
+$\varphi(p^j)=p^{j-1}(p-1)$ for primes $p$ and $j\ge1$,
+\[
+v_2(\varphi(n))=\max(\nu-1,0)+\sum_{p\mid m}w(p),\qquad
+\frac{n}{\varphi(n)}=2^{\mathbf 1_{\nu>0}}\prod_{p\mid m}\frac{p}{p-1},
+\]
+where $\mathbf 1_{\nu>0}$ is $1$ if $\nu>0$ and $0$ otherwise.
+The set of prime factors of $m$ is admissible for $H(s)$ whenever
+$v_2(\varphi(n))=s$, so $M(s)\le2H(s)$. Conversely, if $S$ attains $H(s)$
+with cost exactly $s$ (for $s=0$, $S=\emptyset$), then
+$n=2\prod_{p\in S}p$ has $v_2(\varphi(n))=s$ and $n/\varphi(n)=2H(s)$.
+\end{proof}
+
+For each $s$, $H(s)$ can be computed by dynamic programming over the
+odd primes up to $q_s$ (Proposition~\ref{prop:reduction}).
+Table~\ref{tab:values} lists the first values with an extremal integer.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrr@{\qquad}rrr}
+\toprule
+$s$ & $M(s)$ & $n$ & $s$ & $M(s)$ & $n$\\
+\midrule
+0 & $2$ & $2$ & 7 & $3059/576$ & $1009470$\\
+1 & $3$ & $6$ & 8 & $19019/3456$ & $570570$\\
+2 & $7/2$ & $42$ & 9 & $39767/6912$ & $13123110$\\
+3 & $77/20$ & $462$ & 10 & $1232777/207360$ & $406816410$\\
+4 & $35/8$ & $210$ & 11 & $7572773/1244160$ & $17493105630$\\
+5 & $77/16$ & $2310$ & 12 & $15474797/2488320$ & $822175964610$\\
+6 & $1463/288$ & $43890$ & & &\\
+\bottomrule
+\end{tabular}
+\caption{The values $M(s)$ for $s\le12$ and an integer $n$ with
+$v_2(\varphi(n))=s$ and $n/\varphi(n)=M(s)$.}\label{tab:values}
+\end{table}
+
+\section{Threshold sets and the cost}\label{sec:cost}
+
+The threshold sets $I_t$, the sums $W(t)$ and $B(t)$, and the sets
+$P_k$ are as in the introduction; note that $\varphi(2^{k+1})=2^k$. A
+prime of $P_k$ lies in $I_t$ if and only if
+\begin{equation}\label{eq:cutoff}
+p\le u_k(t):=\frac{1}{1-e^{-k/t}},\qquad\text{and}\qquad
+\frac tk\le u_k(t)\le\frac tk+1,
+\end{equation}
+by $1-e^{-z}\le z$ and $e^{z}\ge1+z$ for $z>0$. Since
+$b(p)<1/(p-1)$ and $w(p)\ge1$, every $p\in I_t$ satisfies $p\le t+1$, so
+$2^{w(p)}\le p-1\le t$ and only the sets $P_k$ with $k\le J:=\lceil\log_2(t+1)\rceil$
+occur. Replacing the cutoff $u_k(t)$ by $t/k$ changes each set by at
+most two primes. We call the resulting change the cutoff error; it is
+$O(J^2)$ in $W(t)$ and $O(J^2/t)$ in $B(t)$, since such a prime has
+$b(p)<1/(p-1)=O(k/t)$.
+
+\begin{lemma}\label{lem:inputs}
+\begin{enumerate}
+\item[(i)] \emph{(Siegel--Walfisz \cite[Theorem~12.1]{Kou}.)} For each $A>0$ there is $c_A>0$ such
+that, uniformly for $q\le(\log y)^A$ and $(a,q)=1$,
+\[
+\pi(y;q,a)=\frac{\li(y)}{\varphi(q)}+O_A\bigl(y\,e^{-c_A\sqrt{\log y}}\bigr),
+\]
+where $\pi(y;q,a)$ is the number of primes $p\le y$ with $p\equiv a\pmod q$
+and $\li(y)=\int_2^y du/\log u$.
+\item[(ii)] \emph{(Mertens, with the de la Vall\'ee Poussin error term \cite[Lemma~8]{Ju23}.)}
+For some $c>0$,
+\[
+\prod_{p\le y}\Bigl(1-\frac1p\Bigr)^{-1}
+=e^\gamma\log y\,\bigl\{1+O\bigl(e^{-c\sqrt{\log y}}\bigr)\bigr\}.
+\]
+\end{enumerate}
+\end{lemma}
+
+Throughout, $x=\log t$ as in the introduction, $k_0=\lceil8\log_2x\rceil$, and $t$ is large.
+
+\begin{proposition}\label{prop:cost}
+As $t\to\infty$,
+\[
+W(t)=\frac tx\Bigl\{1+\frac{C+1}{x}+O(x^{-2})\Bigr\}.
+\]
+\end{proposition}
+
+\begin{proof}
+For $k\le k_0$ and $t/k\le y\le t$ we have $\log y=x+O(\log k_0)\sim x$ and
+$2^{k+1}\le4x^8\le(\log y)^9$, uniformly in $k$. Lemma~\ref{lem:inputs}(i)
+with $A=9$ therefore gives
+$\#\{p\in P_k:\ p\le t/k\}=2^{-k}\li(t/k)+O(te^{-c\sqrt x})$, and the sum
+of these errors over $k\le k_0$, weighted by $k$, is $O(t/x^{10})$.
+
+For $k>k_0$, the integers up to $t/k$ in one class modulo $2^{k+1}$ number
+at most $t/(k2^{k+1})+1$, so these sets contribute
+$O(t2^{-k_0}+J^2)=O(t/x^8+x^2)$ to $W(t)$. Together with the cutoff error
+$O(J^2)$,
+\[
+W(t)=\sum_{k\le k_0}k\,2^{-k}\li(t/k)+O(t/x^4).
+\]
+Since $\li(y)=y/\log y+y/(\log y)^2+O(y/(\log y)^3)$,
+\[
+k\li(t/k)=t\Bigl\{\frac1{x-\log k}+\frac1{(x-\log k)^2}+O\Bigl(\frac1{(x-\log k)^3}\Bigr)\Bigr\}
+=\frac tx\Bigl\{1+\frac{1+\log k}{x}+O\Bigl(\frac{(1+\log k)^2}{x^2}\Bigr)\Bigr\},
+\]
+uniformly for $k\le k_0$, as $\log k\le\log k_0=o(x)$. The moments
+$\sum_k2^{-k}(1+\log k)^r$ are finite, and completing the sums over
+$k\le k_0$ to all $k$ changes them by $O(2^{-k_0}\log k_0)=O(x^{-7})$. Since
+$\sum_k2^{-k}=1$ and $\sum_k2^{-k}(1+\log k)=1+C$, the proposition
+follows.
+\end{proof}
+
+\section{The benefit}\label{sec:benefit}
+
+\begin{proposition}\label{prop:benefit}
+As $t\to\infty$,
+\[
+B(t)=\log\frac{e^\gamma x}{2}-\frac Cx-\frac{D}{2x^2}+O(x^{-3}),
+\qquad\text{hence}\qquad
+2e^{B(t)}=e^\gamma\Bigl\{x-C+\frac{C^2-D}{2x}+O(x^{-2})\Bigr\}.
+\]
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:inputs}(ii), the sum of $b(p)$ over the odd primes
+$p\le t$ is $\log(e^\gamma x/2)+O(e^{-c\sqrt x})$. Up to the cutoff error
+$O(J^2/t)$, the primes of this sum that are missing from $I_t$ are the
+primes of $P_k$ in $(t/k,t]$, $k\le J$. Call the sum of $b(p)$ over these
+primes the missing part. They all exceed $t/J$, and
+$b(p)=1/p+O(1/p^2)$, so replacing $b(p)$ by $1/p$ in the missing part
+changes it by $O(J/t)$.
+
+For $k\le k_0$, partial summation with Lemma~\ref{lem:inputs}(i) gives
+\[
+\sum_{\substack{p\in P_k\\ t/k<p\le t}}\frac1p
+=2^{-k}\int_{t/k}^{t}\frac{dy}{y\log y}+O\bigl((1+\log k)e^{-c\sqrt x}\bigr)
+=2^{-k}\log\frac{x}{x-\log k}+O\bigl((1+\log k)e^{-c\sqrt x}\bigr);
+\]
+the error comes from the two endpoints and from integrating the error
+term of Lemma~\ref{lem:inputs}(i) against $dy/y^2$ over $[t/k,t]$. For
+$k>k_0$, an arithmetic progression with difference $2^{k+1}$ has
+reciprocal sum at most $1/V+2^{-k-1}\log(U/V)$ over $(V,U]$; with $V=t/k$
+and $U=t$,
+the sets $P_k$ with $k>k_0$ contribute
+$O(J^2/t+\sum_{k>k_0}2^{-k}\log k)=O(x^{-4})$. Since $(\log k)/x\to0$
+uniformly for $k\le k_0$,
+\[
+\log\frac{x}{x-\log k}=\frac{\log k}{x}+\frac{(\log k)^2}{2x^2}
++O\Bigl(\frac{(\log k)^3}{x^3}\Bigr),
+\]
+and summing against $2^{-k}$, with the tails $k>k_0$ absorbed as before,
+shows that the missing part equals $C/x+D/(2x^2)+O(x^{-3})$. This is the
+first formula. The second follows by exponentiating:
+$e^\gamma x\exp(-C/x-D/(2x^2)+O(x^{-3}))
+=e^\gamma\{x-C+(C^2-D)/(2x)+O(x^{-2})\}$.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:main}}\label{sec:proof}
+
+\subsection*{The greedy bound}
+The ratios $b(p)/w(p)$ are pairwise distinct. If $p<p'$ had the same
+ratio, then $(p/(p-1))^{w(p')}=(p'/(p'-1))^{w(p)}$; the left side has
+$p'$-adic valuation $0$ and the right side has positive $p'$-adic
+valuation. Only finitely many ratios exceed any positive number, since
+$b(p)\to0$. List the odd primes in decreasing order of $b(p)/w(p)$.
+
+Fix $s$, and let $p_*$ and $t=w(p_*)/b(p_*)$ be as in the introduction; from now on $t=t(s)$ is this value.
+Then $I_t$ consists of $p_*$ and the primes before
+it, so, since $p_*\le t+1$ and $2^{w(p_*)}\le p_*-1$,
+\begin{equation}\label{eq:overflow}
+0<W(t)-s\le w(p_*)=O(\log t),\qquad b(p_*)=\frac{w(p_*)}{t}=O\Bigl(\frac{\log t}{t}\Bigr),
+\end{equation}
+and $t\to\infty$ as $s\to\infty$, because each threshold set is finite.
+
+For every admissible $S$,
+\[
+\sum_{p\in S}b(p)\le\frac st+\sum_{p>2}\max\Bigl\{0,\,b(p)-\frac{w(p)}t\Bigr\}
+=B(t)+\frac{s-W(t)}{t}\le B(t),
+\]
+since only primes of $I_t$ contribute to the sum on the right. On the
+other hand $I_t\setminus\{p_*\}$ is admissible. Hence
+\begin{equation}\label{eq:sandwich}
+B(t)-b(p_*)\le\log H(s)\le B(t).
+\end{equation}
+This is Dantzig's greedy bound \cite{Da57}.
+By \eqref{eq:overflow} and Proposition~\ref{prop:benefit},
+\eqref{eq:sandwich} gives
+$2H(s)=e^\gamma\{x-C+(C^2-D)/(2x)+O(x^{-2})\}$, the error from
+$b(p_*)$ being $O(x^2/t)$. By Proposition~\ref{prop:cost} and
+\eqref{eq:overflow},
+\begin{equation}\label{eq:s}
+s=\frac tx\Bigl\{1+\frac{C+1}{x}+O(x^{-2})\Bigr\}.
+\end{equation}
+
+\subsection*{Elimination of $t$}
+Taking logarithms in \eqref{eq:s},
+\[
+L=x-\log x+\frac{C+1}{x}+O(x^{-2}).
+\]
+This gives first $x\sim L$ and then $x=L+\log L+\delta$ with
+$\delta=O(\log L/L)$. Substituting, and using
+$\log x=\log L+(\log L)/L+O((\log L)^2/L^2)$, we find
+\[
+x=L+\log L+\frac{\log L-C-1}{L}+O\Bigl(\frac{(\log L)^2}{L^2}\Bigr).
+\]
+Insert this into the formula for $2H(s)$, using
+$1/x=1/L+O(\log L/L^2)$. The coefficient of $1/L$ is
+\[
+\log L-C-1+\frac{C^2-D}{2}=\log L-\kappa,
+\]
+and $M(s)=2H(s)$ by Proposition~\ref{prop:reduction}. This proves
+\eqref{eq:main}.\qed
+
+\begin{remark}
+The convergence is slow. At $s=512$, dynamic programming gives
+$M(s)/e^\gamma=7.63945\ldots$, while the first three terms of
+\eqref{eq:main} give $7.56120\ldots$ and the first four give
+$7.58640\ldots$. At $s=16,32,64$ and $128$ the fourth term moves the
+approximation away from $M(s)/e^\gamma$; at $256$ and $512$ it improves
+it.
+\end{remark}
+
+\section*{Acknowledgments and funding}
+
+The research presented in this paper was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme (grant agreement No.~101041711) and by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning. It was also supported by Heights Labs, by Convex Nexus Capital and by the Israel Science Foundation (ISF grants 2258/19 and 4101/25).
+
+This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}. The method is described in~\cite{MathBrainPaper}.
+
+\section*{Declaration of competing interest}
+
+The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+
+This paper is part of a broader research project on proving open problems with AI systems. The work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}; the method is described in~\cite{MathBrainPaper}. OpenAI's Codex wrote the reduction of Proposition~\ref{prop:reduction}, the expansions of Sections~\ref{sec:cost}--\ref{sec:proof} and the computations behind Table~\ref{tab:values}, and two further Codex runs audited them. Anthropic's Claude (Opus~5.5) re-derived the expansions, the greedy bound and the elimination of $t$, recomputed Table~\ref{tab:values}, the constants and the values in the remark with its own code, and wrote the text. The analytic inputs are the theorem of Siegel and Walfisz on primes in progressions, in the form of \cite[Theorem~12.1]{Kou}, and Mertens' product theorem with the error term of de la Vall\'ee Poussin, as stated in \cite[Lemma~8]{Ju23}; the greedy bound for the knapsack problem is due to Dantzig \cite{Da57}, and the comparison with the product of the first primes, for unit costs, is the argument behind Landau's theorem \cite[Theorem~328]{HW}. These results are theirs. What this paper adds is the reduction of $M(s)$ to a knapsack problem over the odd primes and the expansion \eqref{eq:main} beyond its first two terms. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+
+\section*{Data and code availability}
+
+The script \texttt{check.py} is available at \url{https://github.com/yspennstate/totient-two-adic-envelope}. It solves the knapsack problem exactly for $s\le12$ and checks the values against every $n\le200000$ and against exhaustive search for $s\le6$, computes $C$, $D$ and $\kappa$, and computes $M(s)$ at $s=16,32,\dots,512$ together with the three- and four-term approximations.
+
+\begin{thebibliography}{99}
+
+\bibitem{Bloom51}
+T.~F. Bloom, \emph{Erd\H{o}s problems}, Problem~51,
+\url{https://www.erdosproblems.com/51}, accessed 19 November 2026.
+
+\bibitem{CL20}
+A.~Contiero and D.~Lima, \emph{$2$-adic stratification of totients},
+preprint (2020), arXiv:2005.05475.
+
+\bibitem{CCS06}
+S.~Contini, E.~Croot and I.~E. Shparlinski, \emph{Complexity of inverting
+the Euler function}, Math. Comp. \textbf{75} (2006), 983--996,
+doi:10.1090/S0025-5718-06-01826-6, arXiv:math/0404116.
+
+\bibitem{Da57}
+G.~B. Dantzig, \emph{Discrete-variable extremum problems}, Oper.
+Res. \textbf{5} (1957), 266--288, doi:10.1287/opre.5.2.266.
+
+\bibitem{HW}
+G.~H. Hardy and E.~M. Wright, \emph{An introduction to the theory of
+numbers}, 5th ed., Clarendon Press, Oxford, 1979.
+
+\bibitem{Ju23}
+M.~Just, \emph{Numbers which are only orders of abelian or nilpotent
+groups}, J. Th\'eor. Nombres Bordeaux \textbf{35} (2023), 453--466,
+doi:10.5802/jtnb.1251.
+
+\bibitem{Kou}
+D.~Koukoulopoulos, \emph{The distribution of prime numbers}, Graduate
+Studies in Mathematics~203, American Mathematical Society, Providence, RI,
+2019; theorem numbers as in the author's preliminary version,
+\url{https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf}.
+
+\bibitem{SH07}
+J.~Sondow and P.~Hadjicostas, \emph{The generalized-Euler-constant
+function $\gamma(z)$ and a generalization of Somos's quadratic recurrence
+constant}, J. Math. Anal. Appl. \textbf{332} (2007), 292--314,
+doi:10.1016/j.jmaa.2006.09.081.
+
+\bibitem{Zh25}
+J.-J. Zhao, \emph{$p$-adic valuation of Euler's totient function}, Bull.
+Malays. Math. Sci. Soc. \textbf{48} (2025), Paper No.~83,
+doi:10.1007/s40840-025-01869-7.
+
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain}, public repository, 2026, \url{https://github.com/yspennstate/math-brain-public/tree/8c9a6bd478c4ec4082347151b7ae16db50c917dd}.
+
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
+
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public/tree/5629e644cdd510173ae97e9aa92642dabd22dc57}.
+\end{thebibliography}
+
+\end{document}
